@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { storageService } from '@/lib/storage';
 import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
+import { formatDateToDDMMYYYY } from '@/lib/dateUtils';
 
 interface NotificationBellProps {
   onReminderClick?: (investigacion: Investigacion) => void;
@@ -146,7 +147,7 @@ export default function NotificationBell({ onReminderClick }: NotificationBellPr
                         📋 {accion.descripcion}
                       </div>
                       <div className="text-xs text-gray-500 mt-1">
-                        Fecha: {accion.fechaRecordatorio}
+                        Fecha: {formatDateToDDMMYYYY(accion.fechaRecordatorio)}
                       </div>
                     </div>
                   );
