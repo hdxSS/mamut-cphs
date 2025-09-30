@@ -31,12 +31,12 @@
   },
   {
     "content": "Add PWA configuration for Android APK generation",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Adding PWA configuration for Android APK generation"
   },
   {
     "content": "Test application and provide build instructions",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Testing application and providing build instructions"
   }
 ]
