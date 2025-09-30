@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Investigacion } from '@/types/investigacion';
+import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
 import { storageService } from '@/lib/storage';
 import SearchModal from '@/components/SearchModal';
+import AccionesCorrectivas from '@/components/AccionesCorrectivas';
 
 export default function InvestigacionesForm() {
   const [formData, setFormData] = useState<Investigacion>({
@@ -13,12 +14,14 @@ export default function InvestigacionesForm() {
     area: '',
     antiguedad: '',
     declaracionAccidente: '',
-    fecha: new Date().toISOString().split('T')[0]
+    fecha: new Date().toISOString().split('T')[0],
+    acciones: []
   });
 
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showOtroAreaInput, setShowOtroAreaInput] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
     // Generate new ID on component mount
@@ -66,11 +69,11 @@ export default function InvestigacionesForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Save to storage
-    storageService.save(formData);
+    // Save to storage (update if existing, new if not)
+    storageService.save(formData, isUpdate);
 
-    // Download CSV
-    storageService.downloadCSV(formData);
+    // Download CSV of entire database
+    storageService.downloadCSV();
 
     // Show success message
     setIsSaved(true);
@@ -84,16 +87,23 @@ export default function InvestigacionesForm() {
       area: '',
       antiguedad: '',
       declaracionAccidente: '',
-      fecha: new Date().toISOString().split('T')[0]
+      fecha: new Date().toISOString().split('T')[0],
+      acciones: []
     });
     setShowOtroAreaInput(false);
+    setIsUpdate(false);
   };
 
   const handleLoadInvestigacion = (investigacion: Investigacion) => {
     setFormData(investigacion);
+    setIsUpdate(true);
     // Check if loaded area is not in the predefined list (meaning it's a custom "Otros" value)
     const isCustomArea = !areas.filter(a => a !== 'Otros').includes(investigacion.area);
     setShowOtroAreaInput(isCustomArea);
+  };
+
+  const handleAccionesChange = (acciones: AccionCorrectiva[]) => {
+    setFormData(prev => ({ ...prev, acciones }));
   };
 
   return (
