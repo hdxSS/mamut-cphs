@@ -26,12 +26,12 @@
   },
   {
     "content": "Implement tab navigation system",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Implementing tab navigation system"
   },
   {
     "content": "Add PWA configuration for Android APK generation",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Adding PWA configuration for Android APK generation"
   },
   {
