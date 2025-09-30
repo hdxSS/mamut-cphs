@@ -5,9 +5,20 @@ const STORAGE_KEY = 'mamut_cphs_investigaciones';
 const COUNTER_KEY = 'mamut_cphs_counter';
 
 export const storageService = {
-  // Generate sequential 6-digit ID
+  // Get next ID without incrementing counter
+  getNextId: (): string => {
+    if (typeof window === 'undefined') return '000001';
+
+    const currentCounter = localStorage.getItem(COUNTER_KEY);
+    const counter = currentCounter ? parseInt(currentCounter, 10) : 0;
+    const nextCounter = counter + 1;
+
+    return nextCounter.toString().padStart(6, '0');
+  },
+
+  // Generate and increment ID (only call when actually saving NEW investigation)
   generateId: (): string => {
-    if (typeof window === 'undefined') return '000000';
+    if (typeof window === 'undefined') return '000001';
 
     const currentCounter = localStorage.getItem(COUNTER_KEY);
     const counter = currentCounter ? parseInt(currentCounter, 10) : 0;
