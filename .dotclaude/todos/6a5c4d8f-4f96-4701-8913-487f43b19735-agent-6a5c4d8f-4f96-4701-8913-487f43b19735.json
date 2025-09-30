@@ -1,12 +1,12 @@
 [
   {
     "content": "Update Investigacion type to include actions array",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Updating Investigacion type to include actions array"
   },
   {
     "content": "Modify storage service for sequential IDs and single CSV file",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Modifying storage service for sequential IDs and single CSV file"
   },
   {
