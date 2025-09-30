@@ -1,6 +1,7 @@
 'use client';
 
 import { AccionCorrectiva } from '@/types/investigacion';
+import DateInput from '@/components/DateInput';
 
 interface AccionesCorrectivasProps {
   acciones: AccionCorrectiva[];

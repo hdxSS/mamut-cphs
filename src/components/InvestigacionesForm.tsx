@@ -276,4 +276,8 @@ const InvestigacionesForm = forwardRef((props, ref) => {
       />
     </div>
   );
-}
+});
+
+InvestigacionesForm.displayName = 'InvestigacionesForm';
+
+export default InvestigacionesForm;
