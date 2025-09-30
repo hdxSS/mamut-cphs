@@ -183,37 +183,37 @@ export default function InvestigacionesForm() {
               </select>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Antigüedad *
-              </label>
-              <input
-                type="text"
-                name="antiguedad"
-                value={formData.antiguedad}
-                onChange={handleInputChange}
-                required
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
+            {showOtroAreaInput ? (
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Especificar Área (Personal Externo) *
+                </label>
+                <input
+                  type="text"
+                  name="area"
+                  value={formData.area}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Ingrese el área o empresa externa..."
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+            ) : (
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Antigüedad *
+                </label>
+                <input
+                  type="text"
+                  name="antiguedad"
+                  value={formData.antiguedad}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+            )}
           </div>
-
-          {showOtroAreaInput && (
-            <div className="mt-4">
-              <label className="block text-sm font-medium mb-1">
-                Especificar Área (Personal Externo) *
-              </label>
-              <input
-                type="text"
-                name="area"
-                value={formData.area}
-                onChange={handleInputChange}
-                required
-                placeholder="Ingrese el área o empresa externa..."
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-          )}
 
           <div>
             <label className="block text-sm font-medium mb-1">
