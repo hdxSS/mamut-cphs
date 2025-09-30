@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
 import { storageService } from '@/lib/storage';
 import SearchModal from '@/components/SearchModal';
 import AccionesCorrectivas from '@/components/AccionesCorrectivas';
+import DateInput from '@/components/DateInput';
 
-export default function InvestigacionesForm() {
+const InvestigacionesForm = forwardRef((props, ref) => {
   const [formData, setFormData] = useState<Investigacion>({
     id: '000001',
     nombre: '',
@@ -116,6 +117,11 @@ export default function InvestigacionesForm() {
   const handleAccionesChange = (acciones: AccionCorrectiva[]) => {
     setFormData(prev => ({ ...prev, acciones }));
   };
+
+  // Expose method to parent component
+  useImperativeHandle(ref, () => ({
+    loadInvestigacion: handleLoadInvestigacion
+  }));
 
   return (
     <div className="max-w-4xl mx-auto">
