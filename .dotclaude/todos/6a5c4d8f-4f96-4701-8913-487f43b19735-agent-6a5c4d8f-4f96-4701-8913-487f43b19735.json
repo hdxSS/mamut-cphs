@@ -16,12 +16,12 @@
   },
   {
     "content": "Implement notification system for reminders (3 days before)",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Implementing notification system for reminders (3 days before)"
   },
   {
     "content": "Update form to handle actions and update vs new entry logic",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Updating form to handle actions and update vs new entry logic"
   }
 ]
