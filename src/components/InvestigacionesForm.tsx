@@ -86,10 +86,14 @@ export default function InvestigacionesForm() {
       declaracionAccidente: '',
       fecha: new Date().toISOString().split('T')[0]
     });
+    setShowOtroAreaInput(false);
   };
 
   const handleLoadInvestigacion = (investigacion: Investigacion) => {
     setFormData(investigacion);
+    // Check if loaded area is not in the predefined list (meaning it's a custom "Otros" value)
+    const isCustomArea = !areas.filter(a => a !== 'Otros').includes(investigacion.area);
+    setShowOtroAreaInput(isCustomArea);
   };
 
   return (
@@ -165,9 +169,9 @@ export default function InvestigacionesForm() {
               </label>
               <select
                 name="area"
-                value={formData.area}
+                value={showOtroAreaInput ? 'Otros' : formData.area}
                 onChange={handleInputChange}
-                required
+                required={!showOtroAreaInput}
                 className="w-full border border-gray-300 rounded px-3 py-2 bg-white"
               >
                 <option value="">Seleccione un área...</option>
@@ -178,6 +182,23 @@ export default function InvestigacionesForm() {
                 ))}
               </select>
             </div>
+
+            {showOtroAreaInput && (
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Especificar Área (Personal Externo) *
+                </label>
+                <input
+                  type="text"
+                  name="area"
+                  value={formData.area}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Ingrese el área o empresa externa..."
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+            )}
 
             <div>
               <label className="block text-sm font-medium mb-1">
