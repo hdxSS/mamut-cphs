@@ -22,8 +22,10 @@ export default function InvestigacionesForm() {
   const [isSaved, setIsSaved] = useState(false);
   const [showOtroAreaInput, setShowOtroAreaInput] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Generate new ID on component mount
     setFormData(prev => ({ ...prev, id: storageService.generateId() }));
   }, []);
