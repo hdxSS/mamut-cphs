@@ -1,14 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
 import Tabs from '@/components/Tabs';
 import InvestigacionesForm from '@/components/InvestigacionesForm';
 import NotificationBell from '@/components/NotificationBell';
-import { Investigacion } from '@/types/investigacion';
 
 export default function Home() {
-  const formRef = useRef<{ loadInvestigacion: (inv: Investigacion) => void }>(null);
-
   const tabs = [
     {
       id: 'investigaciones',

@@ -49,7 +49,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
           <p className="text-gray-500 text-sm italic">No hay acciones correctivas agregadas.</p>
         )}
 
-        {acciones.map((accion, index) => (
+        {acciones.map((accion) => (
           <div key={accion.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded bg-gray-50">
             <div className="flex items-center">
               <input
