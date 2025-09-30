@@ -152,11 +152,10 @@ const InvestigacionesForm = forwardRef((props, ref) => {
               <label className="block text-sm font-medium mb-1">
                 Fecha *
               </label>
-              <input
-                type="date"
+              <DateInput
                 name="fecha"
                 value={formData.fecha}
-                onChange={handleInputChange}
+                onChange={(value) => setFormData(prev => ({ ...prev, fecha: value }))}
                 required
                 className="w-full border border-gray-300 rounded px-3 py-2"
               />
