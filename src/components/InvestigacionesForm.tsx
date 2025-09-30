@@ -24,8 +24,28 @@ export default function InvestigacionesForm() {
     setFormData(prev => ({ ...prev, id: storageService.generateId() }));
   }, []);
 
+  const areas = [
+    'Embalaje A',
+    'Vigilancia',
+    'Bodega de Despacho',
+    'Bodega de Granel',
+    'Mantención',
+    'Embalaje B',
+    'Galvanoplastía',
+    'Control de Calidad',
+    'Laminado',
+    'Cabeceado',
+    'RRHH',
+    'Reponedores',
+    'Vendedores Terreno',
+    'Atención clientes',
+    'Facturación',
+    'Admin 2ndo piso',
+    'Informática'
+  ];
+
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -131,14 +151,20 @@ export default function InvestigacionesForm() {
               <label className="block text-sm font-medium mb-1">
                 Área *
               </label>
-              <input
-                type="text"
+              <select
                 name="area"
                 value={formData.area}
                 onChange={handleInputChange}
                 required
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
+                className="w-full border border-gray-300 rounded px-3 py-2 bg-white"
+              >
+                <option value="">Seleccione un área...</option>
+                {areas.map((area) => (
+                  <option key={area} value={area}>
+                    {area}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
