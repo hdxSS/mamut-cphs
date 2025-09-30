@@ -1,4 +1,5 @@
 import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
+import { formatDateToDDMMYYYY } from './dateUtils';
 
 const STORAGE_KEY = 'mamut_cphs_investigaciones';
 const COUNTER_KEY = 'mamut_cphs_counter';
@@ -96,23 +97,25 @@ export const storageService = {
     return `${headers.join(',')}\n${rows.join('\n')}`;
   },
 
-  // Download single CSV with all data
+  // Download single CSV with all data (always same filename)
   downloadCSV: (): void => {
     const csv = storageService.exportAllToCSV();
+    if (!csv) return;
+
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
 
-    const fecha = new Date().toISOString().split('T')[0];
+    // Fixed filename - always the same
     link.setAttribute('href', url);
-    link.setAttribute('download', `mamut_cphs_database_${fecha}.csv`);
+    link.setAttribute('download', 'mamut_cphs_database.csv');
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   },
 
-  // Get pending reminders (3 days or less until due date)
+  // Get pending reminders (within 3 days of due date or overdue)
   getPendingReminders: (): { investigacion: Investigacion; accion: AccionCorrectiva }[] => {
     const all = storageService.getAll();
     const today = new Date();
@@ -125,11 +128,13 @@ export const storageService = {
 
     all.forEach(inv => {
       inv.acciones.forEach(accion => {
-        if (!accion.completada) {
+        if (!accion.completada && accion.fechaRecordatorio) {
           const reminderDate = new Date(accion.fechaRecordatorio);
           reminderDate.setHours(0, 0, 0, 0);
 
-          if (reminderDate <= threeDaysFromNow && reminderDate >= today) {
+          // Show if: reminder is today or in the future AND within 3 days
+          // OR reminder is overdue (in the past)
+          if (reminderDate <= threeDaysFromNow) {
             reminders.push({ investigacion: inv, accion });
           }
         }
