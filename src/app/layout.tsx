@@ -16,8 +16,13 @@ export const metadata: Metadata = {
   title: "Mamut CPHS",
   description: "Sistema de gestión de investigaciones",
   manifest: "/manifest.json",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
   themeColor: "#2563eb",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
 
 export default function RootLayout({
