@@ -18,6 +18,7 @@ export default function InvestigacionesForm() {
 
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [showOtroAreaInput, setShowOtroAreaInput] = useState(false);
 
   useEffect(() => {
     // Generate new ID on component mount
@@ -41,14 +42,25 @@ export default function InvestigacionesForm() {
     'Atención clientes',
     'Facturación',
     'Admin 2ndo piso',
-    'Informática'
+    'Informática',
+    'Otros'
   ];
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+
+    if (name === 'area') {
+      setShowOtroAreaInput(value === 'Otros');
+      if (value !== 'Otros') {
+        setFormData(prev => ({ ...prev, [name]: value }));
+      } else {
+        setFormData(prev => ({ ...prev, [name]: '' }));
+      }
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
