@@ -73,10 +73,9 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             </div>
 
             <div>
-              <input
-                type="date"
+              <DateInput
                 value={accion.fechaRecordatorio}
-                onChange={(e) => handleUpdateAccion(accion.id, 'fechaRecordatorio', e.target.value)}
+                onChange={(value) => handleUpdateAccion(accion.id, 'fechaRecordatorio', value)}
                 required={!accion.completada}
                 className="border border-gray-300 rounded px-3 py-2"
               />
