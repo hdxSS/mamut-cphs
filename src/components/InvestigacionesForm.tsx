@@ -8,7 +8,7 @@ import AccionesCorrectivas from '@/components/AccionesCorrectivas';
 
 export default function InvestigacionesForm() {
   const [formData, setFormData] = useState<Investigacion>({
-    id: '',
+    id: '000000',
     nombre: '',
     edad: '',
     area: '',
@@ -26,8 +26,10 @@ export default function InvestigacionesForm() {
 
   useEffect(() => {
     setMounted(true);
-    // Generate new ID on component mount
-    setFormData(prev => ({ ...prev, id: storageService.generateId() }));
+    // Generate new ID on component mount (client-side only)
+    if (typeof window !== 'undefined') {
+      setFormData(prev => ({ ...prev, id: storageService.generateId() }));
+    }
   }, []);
 
   const areas = [
