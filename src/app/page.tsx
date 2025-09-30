@@ -1,15 +1,25 @@
 'use client';
 
+import { useRef } from 'react';
 import Tabs from '@/components/Tabs';
 import InvestigacionesForm from '@/components/InvestigacionesForm';
 import NotificationBell from '@/components/NotificationBell';
+import { Investigacion } from '@/types/investigacion';
 
 export default function Home() {
+  const formRef = useRef<{ loadInvestigacion: (inv: Investigacion) => void }>(null);
+
+  const handleReminderClick = (investigacion: Investigacion) => {
+    if (formRef.current) {
+      formRef.current.loadInvestigacion(investigacion);
+    }
+  };
+
   const tabs = [
     {
       id: 'investigaciones',
       label: 'Investigaciones',
-      component: <InvestigacionesForm />
+      component: <InvestigacionesForm ref={formRef} />
     },
     // More tabs can be added here in the future
   ];
@@ -22,7 +32,7 @@ export default function Home() {
             <h1 className="text-2xl font-bold">Mamut CPHS</h1>
             <p className="text-sm text-blue-100">Sistema de Gestión de Investigaciones</p>
           </div>
-          <NotificationBell />
+          <NotificationBell onReminderClick={handleReminderClick} />
         </div>
       </header>
 
