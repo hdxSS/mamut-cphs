@@ -6,12 +6,12 @@
   },
   {
     "content": "Modify storage service for sequential IDs and single CSV file",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Modifying storage service for sequential IDs and single CSV file"
   },
   {
     "content": "Create Actions component with checkboxes, inputs, dates, and + button",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Creating Actions component with checkboxes, inputs, dates, and + button"
   },
   {
@@ -26,7 +26,7 @@
   },
   {
     "content": "Update CSV export to include all actions data",
-    "status": "pending",
+    "status": "completed",
     "activeForm": "Updating CSV export to include all actions data"
   }
 ]
