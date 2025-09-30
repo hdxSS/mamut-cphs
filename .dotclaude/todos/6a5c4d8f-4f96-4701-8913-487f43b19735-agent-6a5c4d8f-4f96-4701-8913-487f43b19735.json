@@ -11,22 +11,22 @@
   },
   {
     "content": "Create Investigaciones form component with all required fields",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Creating Investigaciones form component with all required fields"
   },
   {
     "content": "Implement CSV file storage system with unique ID generation",
-    "status": "pending",
+    "status": "completed",
     "activeForm": "Implementing CSV file storage system with unique ID generation"
   },
   {
     "content": "Create search/consultation modal with fuzzy search capability",
-    "status": "pending",
+    "status": "completed",
     "activeForm": "Creating search/consultation modal with fuzzy search capability"
   },
   {
     "content": "Implement tab navigation system",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Implementing tab navigation system"
   },
   {
