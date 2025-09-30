@@ -79,7 +79,7 @@ export const storageService = {
 
     const rows = all.map(inv => {
       const accionesStr = inv.acciones
-        .map(acc => `[${acc.completada ? 'X' : ' '}] ${acc.descripcion} (${acc.fechaRecordatorio})`)
+        .map(acc => `[${acc.completada ? 'X' : ' '}] ${acc.descripcion} (${formatDateToDDMMYYYY(acc.fechaRecordatorio)})`)
         .join(' | ');
 
       return [
@@ -88,7 +88,7 @@ export const storageService = {
         inv.edad,
         `"${inv.area.replace(/"/g, '""')}"`,
         inv.antiguedad,
-        inv.fecha,
+        formatDateToDDMMYYYY(inv.fecha),
         `"${inv.declaracionAccidente.replace(/"/g, '""')}"`,
         `"${accionesStr.replace(/"/g, '""')}"`
       ].join(',');

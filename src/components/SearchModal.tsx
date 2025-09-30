@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Investigacion } from '@/types/investigacion';
 import { storageService } from '@/lib/storage';
+import { formatDateToDDMMYYYY } from '@/lib/dateUtils';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -101,7 +102,7 @@ export default function SearchModal({ isOpen, onClose, onSelect }: SearchModalPr
                   >
                     <div className="font-semibold">{item.nombre}</div>
                     <div className="text-sm text-gray-600">ID: {item.id}</div>
-                    <div className="text-sm text-gray-600">Fecha: {item.fecha}</div>
+                    <div className="text-sm text-gray-600">Fecha: {formatDateToDDMMYYYY(item.fecha)}</div>
                   </div>
                 ))}
               </div>
