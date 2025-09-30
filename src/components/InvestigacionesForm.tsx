@@ -73,8 +73,15 @@ export default function InvestigacionesForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // If new entry, generate and assign the ID now
+    let dataToSave = formData;
+    if (!isUpdate) {
+      const newId = storageService.generateId();
+      dataToSave = { ...formData, id: newId };
+    }
+
     // Save to storage (update if existing, new if not)
-    storageService.save(formData, isUpdate);
+    storageService.save(dataToSave, isUpdate);
 
     // Download CSV of entire database
     storageService.downloadCSV();
@@ -83,9 +90,9 @@ export default function InvestigacionesForm() {
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 3000);
 
-    // Reset form with new ID
+    // Reset form with next available ID (preview only, not incremented yet)
     setFormData({
-      id: storageService.generateId(),
+      id: storageService.getNextId(),
       nombre: '',
       edad: '',
       area: '',
