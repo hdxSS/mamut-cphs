@@ -6,12 +6,12 @@
   },
   {
     "content": "Design modular architecture for the application",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Designing modular architecture for the application"
   },
   {
     "content": "Create Investigaciones form component with all required fields",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Creating Investigaciones form component with all required fields"
   },
   {
