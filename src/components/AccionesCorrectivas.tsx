@@ -125,7 +125,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             {/* Attachment button with paperclip icon */}
             <div className="flex flex-col items-center gap-1 pb-2">
               <input
-                ref={(el) => (fileInputRefs.current[accion.id] = el)}
+                ref={(el) => { fileInputRefs.current[accion.id] = el; }}
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleFileChange(accion.id, e)}
