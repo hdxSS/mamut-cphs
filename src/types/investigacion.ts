@@ -14,7 +14,11 @@ export interface Investigacion {
   declaracionAccidente: string;
   fecha: string;
   acciones: AccionCorrectiva[];
-  firma?: string; // Base64 encoded signature image
+  firmaAccidentado?: string;
+  firmaMiembroCPHS?: string;
+  firmaDeptoSSOMA?: string;
+  firmaEncargadoArea?: string;
+  firmaGerenteArea?: string;
 }
 
 export interface SearchFilters {
