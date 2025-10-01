@@ -14,6 +14,7 @@ export interface Investigacion {
   declaracionAccidente: string;
   fecha: string;
   acciones: AccionCorrectiva[];
+  firma?: string; // Base64 encoded signature image
 }
 
 export interface SearchFilters {
