@@ -145,10 +145,9 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
       clearTimeout(timeoutRef.current);
     }
 
+    // Just clear the timeout, don't close the path (it causes visual artifacts)
     timeoutRef.current = setTimeout(() => {
-      if (context) {
-        context.closePath();
-      }
+      // Path will naturally end when next stroke starts
     }, 2000);
 
     // Save signature as base64 with compression
