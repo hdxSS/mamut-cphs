@@ -197,6 +197,32 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
           </div>
         ))}
       </div>
+
+      {/* Image Viewer Modal */}
+      {viewingImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          onClick={() => setViewingImage(null)}
+        >
+          <div
+            className="relative max-w-4xl max-h-[90vh] bg-white rounded-lg p-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setViewingImage(null)}
+              className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-700 text-xl font-bold"
+              title="Cerrar"
+            >
+              ×
+            </button>
+            <img
+              src={viewingImage}
+              alt="Adjunto"
+              className="max-w-full max-h-[80vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
