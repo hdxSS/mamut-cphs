@@ -182,7 +182,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             </div>
 
             <div className="flex-shrink-0 flex flex-col">
-              <label className="text-xs text-blue-600 font-medium mb-1">
+              <label className="text-xs text-blue-600 font-medium mb-1 text-center">
                 Fecha de revisión
               </label>
               <DateInput
