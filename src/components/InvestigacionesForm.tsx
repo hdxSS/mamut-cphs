@@ -221,8 +221,8 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
       <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h2 className="text-2xl font-bold">Investigación</h2>
-            <p className="text-sm text-gray-600">Folio: {formData.id}</p>
+            <h2 className="text-2xl font-bold text-gray-900">Investigación</h2>
+            <p className="text-sm text-gray-900 font-medium">Folio: {formData.id}</p>
           </div>
           <button
             type="button"
@@ -236,19 +236,19 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div ref={fechaRef} className={shakeField === 'fecha' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Fecha *
               </label>
               <DateInput
                 name="fecha"
                 value={formData.fecha}
                 onChange={(value) => setFormData(prev => ({ ...prev, fecha: value }))}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
               />
             </div>
 
             <div ref={nombreRef} className={shakeField === 'nombre' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Nombre *
               </label>
               <input
@@ -256,12 +256,12 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleInputChange}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
               />
             </div>
 
             <div ref={edadRef} className={shakeField === 'edad' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Edad *
               </label>
               <input
@@ -269,12 +269,12 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
                 name="edad"
                 value={formData.edad}
                 onChange={handleInputChange}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
               />
             </div>
 
             <div ref={areaRef} className={shakeField === 'area' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Área *
               </label>
               <select
@@ -294,7 +294,7 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
 
             {showOtroAreaInput ? (
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-sm font-semibold text-gray-900 mb-1">
                   Especificar Área (Personal Externo) *
                 </label>
                 <input
@@ -303,12 +303,12 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
                   value={formData.area}
                   onChange={handleInputChange}
                   placeholder="Ingrese el área o empresa externa..."
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
                 />
               </div>
             ) : (
               <div ref={antiguedadRef} className={shakeField === 'antiguedad' ? 'shake' : ''}>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-sm font-semibold text-gray-900 mb-1">
                   Antigüedad *
                 </label>
                 <input
@@ -316,14 +316,14 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
                   name="antiguedad"
                   value={formData.antiguedad}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
                 />
               </div>
             )}
           </div>
 
           <div ref={declaracionRef} className={shakeField === 'declaracionAccidente' ? 'shake' : ''}>
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-semibold text-gray-900 mb-1">
               Declaración de Accidente *
             </label>
             <textarea
@@ -331,7 +331,7 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
               value={formData.declaracionAccidente}
               onChange={handleInputChange}
               rows={6}
-              className="w-full border border-gray-300 rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
             />
           </div>
 
@@ -341,10 +341,10 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
           />
 
           <div className="space-y-4 border-t-2 border-gray-300 pt-6 mt-6">
-            <h3 className="text-lg font-semibold text-gray-700">Firmas</h3>
+            <h3 className="text-lg font-bold text-gray-900">Firmas</h3>
 
             <div ref={firmaAccidentadoRef} className={shakeField === 'firmaAccidentado' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Firma Accidentado *
               </label>
               <SignaturePad
@@ -354,7 +354,7 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
             </div>
 
             <div ref={firmaMiembroCPHSRef} className={shakeField === 'firmaMiembroCPHS' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Firma Miembro CPHS *
               </label>
               <SignaturePad
@@ -364,7 +364,7 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
             </div>
 
             <div ref={firmaDeptoSSomaRef} className={shakeField === 'firmaDeptoSSoma' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Firma Depto SSOMA *
               </label>
               <SignaturePad
@@ -374,7 +374,7 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
             </div>
 
             <div ref={firmaEncargadoAreaRef} className={shakeField === 'firmaEncargadoArea' ? 'shake' : ''}>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Firma Encargado del Área *
               </label>
               <SignaturePad
@@ -384,7 +384,7 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-semibold text-gray-900 mb-1">
                 Firma Gerente Área
               </label>
               <SignaturePad

@@ -87,7 +87,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold">Acciones a Tomar</h3>
+        <h3 className="text-lg font-bold text-gray-900">Acciones a Tomar</h3>
         <button
           type="button"
           onClick={handleAddAccion}
@@ -100,7 +100,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
 
       <div className="space-y-3">
         {acciones.length === 0 && (
-          <p className="text-gray-500 text-sm italic">No hay acciones correctivas agregadas.</p>
+          <p className="text-gray-700 text-sm italic">No hay acciones correctivas agregadas.</p>
         )}
 
         {acciones.map((accion) => (
@@ -169,12 +169,12 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
                 value={accion.descripcion}
                 onChange={(e) => handleUpdateAccion(accion.id, 'descripcion', e.target.value)}
                 placeholder="Descripción de la acción correctiva..."
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900"
               />
             </div>
 
             <div className="flex-shrink-0 flex flex-col">
-              <label className="text-xs text-blue-600 font-medium mb-1 text-center">
+              <label className="text-xs text-gray-900 font-semibold mb-1 text-center">
                 Fecha de revisión
               </label>
               <DateInput
