@@ -169,9 +169,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             </div>
 
             <div className="flex-1 min-w-0 flex flex-col">
-              <label className="text-xs text-transparent font-medium mb-1 select-none">
-                Placeholder
-              </label>
+              <div className="text-xs h-[17px] mb-1"></div>
               <input
                 type="text"
                 value={accion.descripcion}
