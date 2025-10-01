@@ -64,3 +64,4 @@
 {"display":"should i upload from the workspace folder or from the root?","pastedContents":{},"timestamp":1759287251956,"project":"/home/vibecode/workspace"}
 {"display":"it does. the deployment is failing on vercel","pastedContents":{},"timestamp":1759287481789,"project":"/home/vibecode/workspace"}
 {"display":"i got an erro that the github repository didnt have a required branch on vercel","pastedContents":{},"timestamp":1759287974706,"project":"/home/vibecode/workspace"}
+{"display":"after deployment on vercel it says 404: NOT_FOUND\nCode: NOT_FOUND\nID: gru1::bskfr-1759288256254-5a929d31a3bb","pastedContents":{},"timestamp":1759288279132,"project":"/home/vibecode/workspace"}
