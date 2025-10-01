@@ -151,11 +151,23 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
       }
     }, 2000);
 
-    // Save signature as base64
+    // Save signature as base64 with compression
     const canvas = canvasRef.current;
     if (canvas && hasDrawn) {
-      const dataUrl = canvas.toDataURL('image/png');
-      onChange(dataUrl);
+      // Create a temporary canvas for compression
+      const tempCanvas = document.createElement('canvas');
+      const tempCtx = tempCanvas.getContext('2d');
+
+      // Reduce size to 50% for compression
+      tempCanvas.width = canvas.width / 2;
+      tempCanvas.height = canvas.height / 2;
+
+      if (tempCtx) {
+        tempCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+        // Use 0.5 quality for JPEG-like compression
+        const dataUrl = tempCanvas.toDataURL('image/jpeg', 0.5);
+        onChange(dataUrl);
+      }
     }
   };
 

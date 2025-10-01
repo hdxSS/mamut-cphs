@@ -19,7 +19,11 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
     declaracionAccidente: '',
     fecha: new Date().toISOString().split('T')[0],
     acciones: [],
-    firma: ''
+    firmaAccidentado: '',
+    firmaMiembroCPHS: '',
+    firmaDeptoSSOMA: '',
+    firmaEncargadoArea: '',
+    firmaGerenteArea: ''
   });
 
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
