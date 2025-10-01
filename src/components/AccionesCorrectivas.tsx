@@ -169,7 +169,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             </div>
 
             <div className="flex-1 min-w-0 flex flex-col">
-              <div className="text-xs h-[17px] mb-1"></div>
+              <div className="h-[20px] mb-1"></div>
               <input
                 type="text"
                 value={accion.descripcion}
