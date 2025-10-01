@@ -3,6 +3,7 @@ export interface AccionCorrectiva {
   descripcion: string;
   fechaRecordatorio: string;
   completada: boolean;
+  adjunto?: string; // Base64 compressed image
 }
 
 export interface Investigacion {

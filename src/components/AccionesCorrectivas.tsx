@@ -2,6 +2,7 @@
 
 import { AccionCorrectiva } from '@/types/investigacion';
 import DateInput from '@/components/DateInput';
+import { useRef } from 'react';
 
 interface AccionesCorrectivasProps {
   acciones: AccionCorrectiva[];
@@ -9,12 +10,15 @@ interface AccionesCorrectivasProps {
 }
 
 export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorrectivasProps) {
+  const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
+
   const handleAddAccion = () => {
     const newAccion: AccionCorrectiva = {
       id: `accion-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       descripcion: '',
       fechaRecordatorio: '',
-      completada: false
+      completada: false,
+      adjunto: ''
     };
     onChange([...acciones, newAccion]);
   };
