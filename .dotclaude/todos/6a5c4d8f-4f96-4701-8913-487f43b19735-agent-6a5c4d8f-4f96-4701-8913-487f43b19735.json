@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "content": "Install Supabase client library",
+    "status": "in_progress",
+    "activeForm": "Installing Supabase client library"
+  },
+  {
+    "content": "Create API routes for database operations",
+    "status": "pending",
+    "activeForm": "Creating API routes for database operations"
+  },
+  {
+    "content": "Update storage service to use API instead of localStorage",
+    "status": "pending",
+    "activeForm": "Updating storage service to use API instead of localStorage"
+  },
+  {
+    "content": "Create Supabase configuration and setup instructions",
+    "status": "pending",
+    "activeForm": "Creating Supabase configuration and setup instructions"
+  }
+]
