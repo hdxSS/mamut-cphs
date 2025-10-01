@@ -69,3 +69,4 @@
 {"display":"should i deploy on preview? production? should i check the cache box?","pastedContents":{},"timestamp":1759289254342,"project":"/home/vibecode/workspace"}
 {"display":"NO i still get the 404 error on vercel","pastedContents":{},"timestamp":1759289523212,"project":"/home/vibecode/workspace"}
 {"display":"this is the build log 00:30:51.776 Running bui[Pasted text #1 +70 lines] and this is the URL https://mamut-cphs2-98k9uidyx-hdxss-projects.vercel.app/","pastedContents":{},"timestamp":1759289738139,"project":"/home/vibecode/workspace"}
+{"display":"I still see turbopack on the build, here is the build log 00:40:03.838 25:10  Warning: 'mounted' is assigned a value but never used.  @typescript-eslint/no-unused-vars","pastedContents":{},"timestamp":1759290070771,"project":"/home/vibecode/workspace"}
