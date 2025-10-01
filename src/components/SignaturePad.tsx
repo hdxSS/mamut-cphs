@@ -186,6 +186,9 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
     if (!canvas || !context) return;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
+    // Fill with white background
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0, 0, canvas.width, canvas.height);
     setHasDrawn(false);
     onChange('');
 
