@@ -33,7 +33,8 @@ export async function POST(request: Request) {
           antiguedad: investigacion.antiguedad,
           declaracion_accidente: investigacion.declaracionAccidente,
           fecha: investigacion.fecha,
-          acciones: investigacion.acciones
+          acciones: investigacion.acciones,
+          firma: investigacion.firma || null
         })
         .eq('folio_id', investigacion.id)
         .select()
@@ -53,7 +54,8 @@ export async function POST(request: Request) {
           antiguedad: investigacion.antiguedad,
           declaracion_accidente: investigacion.declaracionAccidente,
           fecha: investigacion.fecha,
-          acciones: investigacion.acciones
+          acciones: investigacion.acciones,
+          firma: investigacion.firma || null
         })
         .select()
         .single();
