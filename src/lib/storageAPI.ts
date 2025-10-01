@@ -59,7 +59,8 @@ export const storageService = {
         antiguedad: item.antiguedad,
         declaracionAccidente: item.declaracion_accidente,
         fecha: item.fecha,
-        acciones: item.acciones || []
+        acciones: item.acciones || [],
+        firma: item.firma || ''
       }));
     } catch (error) {
       console.error('Error fetching all:', error);

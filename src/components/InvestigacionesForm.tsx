@@ -269,6 +269,16 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
             onChange={handleAccionesChange}
           />
 
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              Firma *
+            </label>
+            <SignaturePad
+              value={formData.firma}
+              onChange={(signature) => setFormData(prev => ({ ...prev, firma: signature }))}
+            />
+          </div>
+
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 px-4 rounded hover:bg-blue-700 font-semibold"
