@@ -30,7 +30,6 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
   const [isSaved, setIsSaved] = useState(false);
   const [showOtroAreaInput, setShowOtroAreaInput] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [shakeField, setShakeField] = useState<string | null>(null);
 
   // Refs for scrolling to fields
@@ -46,7 +45,6 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
   const firmaEncargadoAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
     // Show next available ID (without incrementing counter)
     const loadNextId = async () => {
       const nextId = await storageService.getNextId();
@@ -98,7 +96,7 @@ const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion)
     e.preventDefault();
 
     // Validation: Check all required fields
-    const validationErrors: { field: string; ref: React.RefObject<HTMLDivElement>; message: string }[] = [];
+    const validationErrors: { field: string; ref: React.RefObject<HTMLDivElement | null>; message: string }[] = [];
 
     if (!formData.fecha) {
       validationErrors.push({ field: 'fecha', ref: fechaRef, message: 'Fecha es requerida' });

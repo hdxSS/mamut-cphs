@@ -12,7 +12,7 @@ export async function GET() {
     if (error) {
       // If counter doesn't exist, create it
       if (error.code === 'PGRST116') {
-        const { data: newCounter, error: insertError } = await supabase
+        const { error: insertError } = await supabase
           .from('counter')
           .insert({ id: 'folio_counter', value: 0 })
           .select()

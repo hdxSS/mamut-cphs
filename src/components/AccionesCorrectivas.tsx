@@ -84,14 +84,6 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
     reader.readAsDataURL(file);
   };
 
-  const handleRemoveAttachment = (id: string) => {
-    handleUpdateAccion(id, 'adjunto', '');
-    // Clear the file input
-    if (fileInputRefs.current[id]) {
-      fileInputRefs.current[id]!.value = '';
-    }
-  };
-
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
