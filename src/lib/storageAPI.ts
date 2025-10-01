@@ -51,7 +51,7 @@ export const storageService = {
       const data = await response.json();
 
       // Transform database format to app format
-      return data.map((item: any) => ({
+      return data.map((item: Record<string, unknown>) => ({
         id: item.folio_id,
         nombre: item.nombre,
         edad: item.edad,
