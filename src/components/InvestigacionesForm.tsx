@@ -245,7 +245,6 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
                 name="fecha"
                 value={formData.fecha}
                 onChange={(value) => setFormData(prev => ({ ...prev, fecha: value }))}
-                required
                 className="w-full border border-gray-300 rounded px-3 py-2"
               />
             </div>
@@ -259,7 +258,6 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleInputChange}
-                required
                 className="w-full border border-gray-300 rounded px-3 py-2"
               />
             </div>
@@ -273,7 +271,6 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
                 name="edad"
                 value={formData.edad}
                 onChange={handleInputChange}
-                required
                 className="w-full border border-gray-300 rounded px-3 py-2"
               />
             </div>
@@ -286,7 +283,6 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
                 name="area"
                 value={showOtroAreaInput ? 'Otros' : formData.area}
                 onChange={handleInputChange}
-                required={!showOtroAreaInput}
                 className="w-full border border-gray-300 rounded px-3 py-2 bg-white"
               >
                 <option value="">Seleccione un área...</option>
