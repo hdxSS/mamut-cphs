@@ -31,6 +31,19 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
   const [showOtroAreaInput, setShowOtroAreaInput] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [shakeField, setShakeField] = useState<string | null>(null);
+
+  // Refs for scrolling to fields
+  const fechaRef = useRef<HTMLDivElement>(null);
+  const nombreRef = useRef<HTMLDivElement>(null);
+  const edadRef = useRef<HTMLDivElement>(null);
+  const areaRef = useRef<HTMLDivElement>(null);
+  const antiguedadRef = useRef<HTMLDivElement>(null);
+  const declaracionRef = useRef<HTMLDivElement>(null);
+  const firmaAccidentadoRef = useRef<HTMLDivElement>(null);
+  const firmaMiembroCPHSRef = useRef<HTMLDivElement>(null);
+  const firmaDeptoSSomaRef = useRef<HTMLDivElement>(null);
+  const firmaEncargadoAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
