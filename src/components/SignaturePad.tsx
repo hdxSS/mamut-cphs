@@ -44,6 +44,23 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
 
   // Add global mouse/touch up listeners to handle drawing outside canvas
   useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (isDrawing && context) {
+        const { x, y } = getCoordinates(e);
+        context.lineTo(x, y);
+        context.stroke();
+      }
+    };
+
+    const handleGlobalTouchMove = (e: TouchEvent) => {
+      if (isDrawing && context) {
+        e.preventDefault();
+        const { x, y } = getCoordinates(e);
+        context.lineTo(x, y);
+        context.stroke();
+      }
+    };
+
     const handleGlobalMouseUp = () => {
       if (isDrawing) {
         stopDrawing();
@@ -56,14 +73,20 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
       }
     };
 
+    if (isDrawing) {
+      window.addEventListener('mousemove', handleGlobalMouseMove);
+      window.addEventListener('touchmove', handleGlobalTouchMove, { passive: false });
+    }
     window.addEventListener('mouseup', handleGlobalMouseUp);
     window.addEventListener('touchend', handleGlobalTouchEnd);
 
     return () => {
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
+      window.removeEventListener('touchmove', handleGlobalTouchMove);
       window.removeEventListener('mouseup', handleGlobalMouseUp);
       window.removeEventListener('touchend', handleGlobalTouchEnd);
     };
-  }, [isDrawing]);
+  }, [isDrawing, context]);
 
   const getCoordinates = (e: MouseEvent | TouchEvent | React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
