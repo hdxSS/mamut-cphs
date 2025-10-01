@@ -97,6 +97,56 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validation: Check all required fields
+    const validationErrors: { field: string; ref: React.RefObject<HTMLDivElement>; message: string }[] = [];
+
+    if (!formData.fecha) {
+      validationErrors.push({ field: 'fecha', ref: fechaRef, message: 'Fecha es requerida' });
+    }
+    if (!formData.nombre.trim()) {
+      validationErrors.push({ field: 'nombre', ref: nombreRef, message: 'Nombre es requerido' });
+    }
+    if (!formData.edad.trim()) {
+      validationErrors.push({ field: 'edad', ref: edadRef, message: 'Edad es requerida' });
+    }
+    if (!formData.area.trim()) {
+      validationErrors.push({ field: 'area', ref: areaRef, message: 'Área es requerida' });
+    }
+    if (!showOtroAreaInput && !formData.antiguedad.trim()) {
+      validationErrors.push({ field: 'antiguedad', ref: antiguedadRef, message: 'Antigüedad es requerida' });
+    }
+    if (!formData.declaracionAccidente.trim()) {
+      validationErrors.push({ field: 'declaracionAccidente', ref: declaracionRef, message: 'Declaración de Accidente es requerida' });
+    }
+    if (!formData.firmaAccidentado || formData.firmaAccidentado === '') {
+      validationErrors.push({ field: 'firmaAccidentado', ref: firmaAccidentadoRef, message: 'Firma Accidentado es requerida' });
+    }
+    if (!formData.firmaMiembroCPHS || formData.firmaMiembroCPHS === '') {
+      validationErrors.push({ field: 'firmaMiembroCPHS', ref: firmaMiembroCPHSRef, message: 'Firma Miembro CPHS es requerida' });
+    }
+    if (!formData.firmaDeptoSSOMA || formData.firmaDeptoSSOMA === '') {
+      validationErrors.push({ field: 'firmaDeptoSSoma', ref: firmaDeptoSSomaRef, message: 'Firma Depto SSOMA es requerida' });
+    }
+    if (!formData.firmaEncargadoArea || formData.firmaEncargadoArea === '') {
+      validationErrors.push({ field: 'firmaEncargadoArea', ref: firmaEncargadoAreaRef, message: 'Firma Encargado del Área es requerida' });
+    }
+
+    // If there are validation errors, scroll to first one and shake it
+    if (validationErrors.length > 0) {
+      const firstError = validationErrors[0];
+
+      // Scroll to the field
+      if (firstError.ref.current) {
+        firstError.ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      // Shake the field
+      setShakeField(firstError.field);
+      setTimeout(() => setShakeField(null), 500);
+
+      return;
+    }
+
     // If new entry, generate and assign the ID now
     let dataToSave = formData;
     if (!isUpdate) {
@@ -156,6 +206,20 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
 
   return (
     <div className="max-w-4xl mx-auto">
+      <style jsx>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+          20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        .shake {
+          animation: shake 0.5s;
+          border: 2px solid #ef4444 !important;
+          border-radius: 8px;
+          padding: 8px;
+          background-color: #fee2e2;
+        }
+      `}</style>
       <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="flex justify-between items-center mb-6">
           <div>
@@ -173,7 +237,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
+            <div ref={fechaRef} className={shakeField === 'fecha' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Fecha *
               </label>
@@ -186,7 +250,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
               />
             </div>
 
-            <div>
+            <div ref={nombreRef} className={shakeField === 'nombre' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Nombre *
               </label>
@@ -200,7 +264,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
               />
             </div>
 
-            <div>
+            <div ref={edadRef} className={shakeField === 'edad' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Edad *
               </label>
@@ -214,7 +278,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
               />
             </div>
 
-            <div>
+            <div ref={areaRef} className={shakeField === 'area' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Área *
               </label>
