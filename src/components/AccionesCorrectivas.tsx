@@ -111,7 +111,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
         )}
 
         {acciones.map((accion) => (
-          <div key={accion.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded bg-gray-50">
+          <div key={accion.id} className="flex items-center gap-2 p-3 border border-gray-200 rounded bg-gray-50">
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -121,30 +121,74 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
               />
             </div>
 
-            <div className="flex-1">
+            {/* Attachment button with paperclip icon */}
+            <div className="flex items-center">
+              <input
+                ref={(el) => (fileInputRefs.current[accion.id] = el)}
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleFileChange(accion.id, e)}
+                className="hidden"
+                id={`file-${accion.id}`}
+              />
+              <label
+                htmlFor={`file-${accion.id}`}
+                className={`cursor-pointer p-2 rounded transition-colors ${
+                  accion.adjunto
+                    ? 'bg-green-100 hover:bg-green-200 text-green-700'
+                    : 'bg-gray-200 hover:bg-gray-300 text-gray-600'
+                }`}
+                title={accion.adjunto ? 'Cambiar adjunto' : 'Adjuntar imagen'}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
+                  />
+                </svg>
+              </label>
+              {accion.adjunto && (
+                <button
+                  type="button"
+                  onClick={() => handleRemoveAttachment(accion.id)}
+                  className="ml-1 text-red-600 hover:text-red-800 text-sm"
+                  title="Eliminar adjunto"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+
+            <div className="flex-1 min-w-0">
               <input
                 type="text"
                 value={accion.descripcion}
                 onChange={(e) => handleUpdateAccion(accion.id, 'descripcion', e.target.value)}
                 placeholder="Descripción de la acción correctiva..."
-                required={!accion.completada}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
               />
             </div>
 
-            <div>
+            <div className="flex-shrink-0">
               <DateInput
                 value={accion.fechaRecordatorio}
                 onChange={(value) => handleUpdateAccion(accion.id, 'fechaRecordatorio', value)}
-                required={!accion.completada}
-                className="border border-gray-300 rounded px-3 py-2"
+                className="border border-gray-300 rounded px-3 py-2 text-sm"
               />
             </div>
 
             <button
               type="button"
               onClick={() => handleRemoveAccion(accion.id)}
-              className="text-red-600 hover:text-red-800 font-bold text-xl px-2"
+              className="text-red-600 hover:text-red-800 font-bold text-xl px-2 flex-shrink-0"
               title="Eliminar acción"
             >
               ×
