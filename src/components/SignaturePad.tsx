@@ -42,7 +42,30 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
     }
   }, [value]);
 
-  const getCoordinates = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+  // Add global mouse/touch up listeners to handle drawing outside canvas
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isDrawing) {
+        stopDrawing();
+      }
+    };
+
+    const handleGlobalTouchEnd = () => {
+      if (isDrawing) {
+        stopDrawing();
+      }
+    };
+
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+    window.addEventListener('touchend', handleGlobalTouchEnd);
+
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+      window.removeEventListener('touchend', handleGlobalTouchEnd);
+    };
+  }, [isDrawing]);
+
+  const getCoordinates = (e: MouseEvent | TouchEvent | React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
 
@@ -90,8 +113,7 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
     context.stroke();
   };
 
-  const stopDrawing = (e?: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    if (e) e.preventDefault();
+  const stopDrawing = () => {
     if (!isDrawing) return;
     setIsDrawing(false);
 
@@ -146,16 +168,8 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
           height={height}
           onMouseDown={startDrawing}
           onMouseMove={draw}
-          onMouseUp={stopDrawing}
-          onMouseLeave={(e) => {
-            if (isDrawing) {
-              stopDrawing(e);
-            }
-          }}
           onTouchStart={startDrawing}
           onTouchMove={draw}
-          onTouchEnd={stopDrawing}
-          onTouchCancel={stopDrawing}
           className="cursor-crosshair touch-none bg-white rounded"
           style={{ display: 'block', width: '100%', maxWidth: `${width}px`, height: `${height}px` }}
         />
