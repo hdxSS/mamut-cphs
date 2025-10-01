@@ -34,7 +34,11 @@ export async function POST(request: Request) {
           declaracion_accidente: investigacion.declaracionAccidente,
           fecha: investigacion.fecha,
           acciones: investigacion.acciones,
-          firma: investigacion.firma || null
+          firma_accidentado: investigacion.firmaAccidentado || null,
+          firma_miembro_cphs: investigacion.firmaMiembroCPHS || null,
+          firma_depto_ssoma: investigacion.firmaDeptoSSOMA || null,
+          firma_encargado_area: investigacion.firmaEncargadoArea || null,
+          firma_gerente_area: investigacion.firmaGerenteArea || null
         })
         .eq('folio_id', investigacion.id)
         .select()
@@ -55,7 +59,11 @@ export async function POST(request: Request) {
           declaracion_accidente: investigacion.declaracionAccidente,
           fecha: investigacion.fecha,
           acciones: investigacion.acciones,
-          firma: investigacion.firma || null
+          firma_accidentado: investigacion.firmaAccidentado || null,
+          firma_miembro_cphs: investigacion.firmaMiembroCPHS || null,
+          firma_depto_ssoma: investigacion.firmaDeptoSSOMA || null,
+          firma_encargado_area: investigacion.firmaEncargadoArea || null,
+          firma_gerente_area: investigacion.firmaGerenteArea || null
         })
         .select()
         .single();
