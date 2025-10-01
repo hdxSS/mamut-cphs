@@ -72,3 +72,4 @@
 {"display":"I still see turbopack on the build, here is the build log 00:40:03.838 25:10  Warning: 'mounted' is assigned a value but never used.  @typescript-eslint/no-unused-vars","pastedContents":{},"timestamp":1759290070771,"project":"/home/vibecode/workspace"}
 {"display":"I still see turbopack on the build, here is the build log 00:39:43.802 Run[Pasted text #1 +70 lines]","pastedContents":{},"timestamp":1759290126061,"project":"/home/vibecode/workspace"}
 {"display":"changes were saved. commit hash is now cda05b8 can you check if this is the correct last version you told me to upload? https://github.com/hdxSS/mamut-cphs","pastedContents":{},"timestamp":1759290321134,"project":"/home/vibecode/workspace"}
+{"display":"Nope, it still says turbopack on build next. can you check the repo again i made it public temporarily https://github.com/hdxSS/mamut-cphs","pastedContents":{},"timestamp":1759290500009,"project":"/home/vibecode/workspace"}
