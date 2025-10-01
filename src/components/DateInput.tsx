@@ -1,7 +1,5 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-
 interface DateInputProps {
   value: string; // yyyy-mm-dd format
   onChange: (value: string) => void; // yyyy-mm-dd format
