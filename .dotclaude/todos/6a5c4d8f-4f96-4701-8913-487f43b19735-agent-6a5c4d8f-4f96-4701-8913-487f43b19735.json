@@ -21,12 +21,12 @@
   },
   {
     "content": "Update InvestigacionesForm to use async storage",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Updating InvestigacionesForm to use async storage"
   },
   {
     "content": "Update SearchModal to use async storage",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Updating SearchModal to use async storage"
   },
   {

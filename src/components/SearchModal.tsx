@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Investigacion } from '@/types/investigacion';
-import { storageService } from '@/lib/storage';
+import { storageService } from '@/lib/storageAPI';
 import { formatDateToDDMMYYYY } from '@/lib/dateUtils';
 
 interface SearchModalProps {

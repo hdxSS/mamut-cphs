@@ -73,29 +73,30 @@ const InvestigacionesForm = forwardRef((props, ref) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // If new entry, generate and assign the ID now
     let dataToSave = formData;
     if (!isUpdate) {
-      const newId = storageService.generateId();
+      const newId = await storageService.generateId();
       dataToSave = { ...formData, id: newId };
     }
 
     // Save to storage (update if existing, new if not)
-    storageService.save(dataToSave, isUpdate);
+    await storageService.save(dataToSave, isUpdate);
 
     // Download CSV of entire database
-    storageService.downloadCSV();
+    await storageService.downloadCSV();
 
     // Show success message
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 3000);
 
     // Reset form with next available ID (preview only, not incremented yet)
+    const nextId = await storageService.getNextId();
     setFormData({
-      id: storageService.getNextId(),
+      id: nextId,
       nombre: '',
       edad: '',
       area: '',
