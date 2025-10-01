@@ -35,6 +35,62 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
     );
   };
 
+  const handleFileChange = async (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Check if it's an image
+    if (!file.type.startsWith('image/')) {
+      alert('Por favor seleccione solo archivos de imagen');
+      return;
+    }
+
+    // Compress the image
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        // Create canvas for compression
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Reduce to max 800px width while maintaining aspect ratio
+        const maxWidth = 800;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth) {
+          height = (height * maxWidth) / width;
+          width = maxWidth;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        if (ctx) {
+          // Fill white background
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          // Draw image
+          ctx.drawImage(img, 0, 0, width, height);
+          // Compress to JPEG with 0.6 quality
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.6);
+          handleUpdateAccion(id, 'adjunto', compressedDataUrl);
+        }
+      };
+      img.src = event.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveAttachment = (id: string) => {
+    handleUpdateAccion(id, 'adjunto', '');
+    // Clear the file input
+    if (fileInputRefs.current[id]) {
+      fileInputRefs.current[id]!.value = '';
+    }
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
