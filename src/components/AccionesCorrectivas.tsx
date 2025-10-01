@@ -123,7 +123,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             </div>
 
             {/* Attachment button with paperclip icon */}
-            <div className="flex items-center">
+            <div className="flex flex-col items-center gap-1">
               <input
                 ref={(el) => (fileInputRefs.current[accion.id] = el)}
                 type="file"
@@ -159,11 +159,11 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
               {accion.adjunto && (
                 <button
                   type="button"
-                  onClick={() => handleRemoveAttachment(accion.id)}
-                  className="ml-1 text-red-600 hover:text-red-800 text-sm"
-                  title="Eliminar adjunto"
+                  onClick={() => setViewingImage(accion.adjunto || null)}
+                  className="text-xs text-blue-600 hover:text-blue-800 underline"
+                  title="Ver imagen adjunta"
                 >
-                  ×
+                  Ver
                 </button>
               )}
             </div>
