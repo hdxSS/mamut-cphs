@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
 import { storageService } from '@/lib/storageAPI';
 import SearchModal from '@/components/SearchModal';
