@@ -112,8 +112,8 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
         )}
 
         {acciones.map((accion) => (
-          <div key={accion.id} className="flex items-center gap-2 p-3 border border-gray-200 rounded bg-gray-50">
-            <div className="flex items-center">
+          <div key={accion.id} className="flex items-start gap-2 p-3 border border-gray-200 rounded bg-gray-50">
+            <div className="flex items-center pt-2">
               <input
                 type="checkbox"
                 checked={accion.completada}
@@ -123,7 +123,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             </div>
 
             {/* Attachment button with paperclip icon */}
-            <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center gap-1 pt-2">
               <input
                 ref={(el) => (fileInputRefs.current[accion.id] = el)}
                 type="file"
@@ -192,7 +192,7 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
             <button
               type="button"
               onClick={() => handleRemoveAccion(accion.id)}
-              className="text-red-600 hover:text-red-800 font-bold text-xl px-2 flex-shrink-0"
+              className="text-red-600 hover:text-red-800 font-bold text-xl px-2 flex-shrink-0 pt-2"
               title="Eliminar acción"
             >
               ×
