@@ -60,7 +60,11 @@ export const storageService = {
         declaracionAccidente: item.declaracion_accidente,
         fecha: item.fecha,
         acciones: item.acciones || [],
-        firma: item.firma || ''
+        firmaAccidentado: item.firma_accidentado || '',
+        firmaMiembroCPHS: item.firma_miembro_cphs || '',
+        firmaDeptoSSOMA: item.firma_depto_ssoma || '',
+        firmaEncargadoArea: item.firma_encargado_area || '',
+        firmaGerenteArea: item.firma_gerente_area || ''
       }));
     } catch (error) {
       console.error('Error fetching all:', error);

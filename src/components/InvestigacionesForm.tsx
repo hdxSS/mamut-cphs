@@ -273,14 +273,58 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
             onChange={handleAccionesChange}
           />
 
-          <div>
-            <label className="block text-sm font-medium mb-1">
-              Firma *
-            </label>
-            <SignaturePad
-              value={formData.firma}
-              onChange={(signature) => setFormData(prev => ({ ...prev, firma: signature }))}
-            />
+          <div className="space-y-4 border-t-2 border-gray-300 pt-6 mt-6">
+            <h3 className="text-lg font-semibold text-gray-700">Firmas</h3>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Firma Accidentado *
+              </label>
+              <SignaturePad
+                value={formData.firmaAccidentado}
+                onChange={(signature) => setFormData(prev => ({ ...prev, firmaAccidentado: signature }))}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Firma Miembro CPHS *
+              </label>
+              <SignaturePad
+                value={formData.firmaMiembroCPHS}
+                onChange={(signature) => setFormData(prev => ({ ...prev, firmaMiembroCPHS: signature }))}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Firma Depto SSOMA *
+              </label>
+              <SignaturePad
+                value={formData.firmaDeptoSSOMA}
+                onChange={(signature) => setFormData(prev => ({ ...prev, firmaDeptoSSOMA: signature }))}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Firma Encargado del Área *
+              </label>
+              <SignaturePad
+                value={formData.firmaEncargadoArea}
+                onChange={(signature) => setFormData(prev => ({ ...prev, firmaEncargadoArea: signature }))}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Firma Gerente Área
+              </label>
+              <SignaturePad
+                value={formData.firmaGerenteArea}
+                onChange={(signature) => setFormData(prev => ({ ...prev, firmaGerenteArea: signature }))}
+              />
+            </div>
           </div>
 
           <button
