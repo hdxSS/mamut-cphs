@@ -206,7 +206,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
 
   return (
     <div className="max-w-4xl mx-auto">
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{__html: `
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
           10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
@@ -219,7 +219,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
           padding: 8px;
           background-color: #fee2e2;
         }
-      `}</style>
+      `}} />
       <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="flex justify-between items-center mb-6">
           <div>
