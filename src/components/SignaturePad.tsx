@@ -13,6 +13,8 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
+  const [hasDrawn, setHasDrawn] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -34,6 +36,7 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
       const img = new Image();
       img.onload = () => {
         ctx.drawImage(img, 0, 0);
+        setHasDrawn(true);
       };
       img.src = value;
     }
@@ -64,7 +67,14 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     e.preventDefault();
     if (!context) return;
+
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
     setIsDrawing(true);
+    setHasDrawn(true);
 
     const { x, y } = getCoordinates(e);
     context.beginPath();
@@ -85,9 +95,20 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
     if (!isDrawing) return;
     setIsDrawing(false);
 
+    // Set timeout to end the stroke after 2 seconds
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      if (context) {
+        context.closePath();
+      }
+    }, 2000);
+
     // Save signature as base64
     const canvas = canvasRef.current;
-    if (canvas) {
+    if (canvas && hasDrawn) {
       const dataUrl = canvas.toDataURL('image/png');
       onChange(dataUrl);
     }
@@ -98,12 +119,27 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
     if (!canvas || !context) return;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
+    setHasDrawn(false);
     onChange('');
+
+    // Clear any pending timeouts
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
   };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="space-y-2">
-      <div className="border-4 border-blue-500 rounded-lg p-2 bg-gray-50 inline-block">
+      <div className="border-4 border-blue-500 rounded-lg p-2 bg-gray-50 inline-block select-none">
         <canvas
           ref={canvasRef}
           width={width}
@@ -113,8 +149,7 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
           onMouseUp={stopDrawing}
           onMouseLeave={(e) => {
             if (isDrawing) {
-              // Don't stop drawing when leaving the canvas
-              e.preventDefault();
+              stopDrawing(e);
             }
           }}
           onTouchStart={startDrawing}
