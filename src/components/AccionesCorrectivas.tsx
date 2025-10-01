@@ -2,7 +2,7 @@
 
 import { AccionCorrectiva } from '@/types/investigacion';
 import DateInput from '@/components/DateInput';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 interface AccionesCorrectivasProps {
   acciones: AccionCorrectiva[];
@@ -11,6 +11,7 @@ interface AccionesCorrectivasProps {
 
 export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorrectivasProps) {
   const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
+  const [viewingImage, setViewingImage] = useState<string | null>(null);
 
   const handleAddAccion = () => {
     const newAccion: AccionCorrectiva = {
