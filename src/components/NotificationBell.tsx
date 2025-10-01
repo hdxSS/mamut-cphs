@@ -18,11 +18,9 @@ export default function NotificationBell({ onReminderClick }: NotificationBellPr
     setMounted(true);
 
     // Check reminders on mount and every hour
-    const checkReminders = () => {
-      if (typeof window !== 'undefined') {
-        const pending = storageService.getPendingReminders();
-        setReminders(pending);
-      }
+    const checkReminders = async () => {
+      const pending = await storageService.getPendingReminders();
+      setReminders(pending);
     };
 
     checkReminders();
