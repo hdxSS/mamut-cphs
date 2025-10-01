@@ -314,7 +314,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
                 />
               </div>
             ) : (
-              <div>
+              <div ref={antiguedadRef} className={shakeField === 'antiguedad' ? 'shake' : ''}>
                 <label className="block text-sm font-medium mb-1">
                   Antigüedad *
                 </label>
@@ -330,7 +330,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
             )}
           </div>
 
-          <div>
+          <div ref={declaracionRef} className={shakeField === 'declaracionAccidente' ? 'shake' : ''}>
             <label className="block text-sm font-medium mb-1">
               Declaración de Accidente *
             </label>
@@ -352,7 +352,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
           <div className="space-y-4 border-t-2 border-gray-300 pt-6 mt-6">
             <h3 className="text-lg font-semibold text-gray-700">Firmas</h3>
 
-            <div>
+            <div ref={firmaAccidentadoRef} className={shakeField === 'firmaAccidentado' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Firma Accidentado *
               </label>
@@ -362,7 +362,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
               />
             </div>
 
-            <div>
+            <div ref={firmaMiembroCPHSRef} className={shakeField === 'firmaMiembroCPHS' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Firma Miembro CPHS *
               </label>
@@ -372,7 +372,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
               />
             </div>
 
-            <div>
+            <div ref={firmaDeptoSSomaRef} className={shakeField === 'firmaDeptoSSoma' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Firma Depto SSOMA *
               </label>
@@ -382,7 +382,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
               />
             </div>
 
-            <div>
+            <div ref={firmaEncargadoAreaRef} className={shakeField === 'firmaEncargadoArea' ? 'shake' : ''}>
               <label className="block text-sm font-medium mb-1">
                 Firma Encargado del Área *
               </label>
