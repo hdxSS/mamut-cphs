@@ -6,6 +6,7 @@ import { storageService } from '@/lib/storageAPI';
 import SearchModal from '@/components/SearchModal';
 import AccionesCorrectivas from '@/components/AccionesCorrectivas';
 import DateInput from '@/components/DateInput';
+import SignaturePad from '@/components/SignaturePad';
 
 const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, ref) => {
   const { onSaved } = props;
@@ -17,7 +18,8 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
     antiguedad: '',
     declaracionAccidente: '',
     fecha: new Date().toISOString().split('T')[0],
-    acciones: []
+    acciones: [],
+    firma: ''
   });
 
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
