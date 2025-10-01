@@ -75,3 +75,4 @@
 {"display":"Nope, it still says turbopack on build next. can you check the repo again i made it public temporarily https://github.com/hdxSS/mamut-cphs","pastedContents":{},"timestamp":1759290500009,"project":"/home/vibecode/workspace"}
 {"display":"latest build log after overriding with npm install 00:59:06.445 Running bui[Pasted text #1 +63 lines]","pastedContents":{},"timestamp":1759291256108,"project":"/home/vibecode/workspace"}
 {"display":"should i use a deploy hook to the main branch?","pastedContents":{},"timestamp":1759291396326,"project":"/home/vibecode/workspace"}
+{"display":"the deploy hook link opens and says {\"job\":{\"id\":\"BagPu6V4JCbpS05KauAO\",\"state\":\"PENDING\",\"createdAt\":1759291478337}}","pastedContents":{},"timestamp":1759291535744,"project":"/home/vibecode/workspace"}
