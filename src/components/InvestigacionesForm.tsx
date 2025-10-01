@@ -87,6 +87,11 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
     // Save to storage (update if existing, new if not)
     await storageService.save(dataToSave, isUpdate);
 
+    // Notify parent that data was saved
+    if (onSaved) {
+      onSaved();
+    }
+
     // Show success message
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 3000);
