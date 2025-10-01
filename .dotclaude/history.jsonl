@@ -33,3 +33,4 @@
 {"display":"The sign pad is a bit on the short side, can you please double it in width. Also can you make a frame for the signpad as it's not clear where it ends. Also when you touch the sides of the signpad the stroke ends, please fix this","pastedContents":{},"timestamp":1759281603286,"project":"/home/vibecode/workspace"}
 {"display":"Limpiar firma clears the signature, but if i touch the blue frame it comes back also the current stroke should end if i stop pressing for two seconds","pastedContents":{},"timestamp":1759281836882,"project":"/home/vibecode/workspace"}
 {"display":"i'm getting this issue on the runtime ## Error Type\nCo[Pasted text #1 +63 lines]","pastedContents":{},"timestamp":1759282031651,"project":"/home/vibecode/workspace"}
+{"display":"Stroke if stopping if hitting the frame","pastedContents":{},"timestamp":1759282099719,"project":"/home/vibecode/workspace"}
