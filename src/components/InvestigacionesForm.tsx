@@ -8,7 +8,7 @@ import AccionesCorrectivas from '@/components/AccionesCorrectivas';
 import DateInput from '@/components/DateInput';
 import SignaturePad from '@/components/SignaturePad';
 
-const InvestigacionesForm = forwardRef<{ saveForm: () => Promise<void> }, { onSaved?: () => void }>((props, ref) => {
+const InvestigacionesForm = forwardRef<{ loadInvestigacion: (inv: Investigacion) => void }, { onSaved?: () => void }>((props, ref) => {
   const { onSaved } = props;
   const [formData, setFormData] = useState<Investigacion>({
     id: '000001',
