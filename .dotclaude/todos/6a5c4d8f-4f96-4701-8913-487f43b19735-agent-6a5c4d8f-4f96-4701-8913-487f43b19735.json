@@ -6,17 +6,32 @@
   },
   {
     "content": "Create API routes for database operations",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Creating API routes for database operations"
   },
   {
     "content": "Update storage service to use API instead of localStorage",
-    "status": "pending",
+    "status": "completed",
     "activeForm": "Updating storage service to use API instead of localStorage"
   },
   {
     "content": "Create Supabase configuration and setup instructions",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Creating Supabase configuration and setup instructions"
+  },
+  {
+    "content": "Update InvestigacionesForm to use async storage",
+    "status": "pending",
+    "activeForm": "Updating InvestigacionesForm to use async storage"
+  },
+  {
+    "content": "Update SearchModal to use async storage",
+    "status": "pending",
+    "activeForm": "Updating SearchModal to use async storage"
+  },
+  {
+    "content": "Update NotificationBell to use async storage",
+    "status": "pending",
+    "activeForm": "Updating NotificationBell to use async storage"
   }
 ]
