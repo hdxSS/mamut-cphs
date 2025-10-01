@@ -1,12 +1,12 @@
 [
   {
     "content": "Install Supabase client library",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Installing Supabase client library"
   },
   {
     "content": "Create API routes for database operations",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Creating API routes for database operations"
   },
   {
