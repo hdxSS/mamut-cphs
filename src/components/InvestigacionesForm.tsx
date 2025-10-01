@@ -86,9 +86,6 @@ const InvestigacionesForm = forwardRef((props, ref) => {
     // Save to storage (update if existing, new if not)
     await storageService.save(dataToSave, isUpdate);
 
-    // Download CSV of entire database
-    await storageService.downloadCSV();
-
     // Show success message
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 3000);
