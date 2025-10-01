@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { storageService } from '@/lib/storage';
+import { storageService } from '@/lib/storageAPI';
 import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
 import { formatDateToDDMMYYYY } from '@/lib/dateUtils';
 

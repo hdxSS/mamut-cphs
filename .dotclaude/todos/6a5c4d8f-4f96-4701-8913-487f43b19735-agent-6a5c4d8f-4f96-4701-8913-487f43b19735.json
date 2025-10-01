@@ -26,12 +26,12 @@
   },
   {
     "content": "Update SearchModal to use async storage",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Updating SearchModal to use async storage"
   },
   {
     "content": "Update NotificationBell to use async storage",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Updating NotificationBell to use async storage"
   }
 ]

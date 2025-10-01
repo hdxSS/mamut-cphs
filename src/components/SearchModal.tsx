@@ -18,9 +18,9 @@ export default function SearchModal({ isOpen, onClose, onSelect }: SearchModalPr
 
   if (!isOpen) return null;
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (searchTerm.trim()) {
-      const found = storageService.search(searchTerm, searchBy);
+      const found = await storageService.search(searchTerm, searchBy);
       setResults(found);
     }
   };
