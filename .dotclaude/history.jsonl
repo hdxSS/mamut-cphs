@@ -49,3 +49,4 @@
 {"display":"underneath the paperclip i need a \"Ver\" which opens a popup with the attached image. The uploaded image should be saved to the form when the user presses the \"Grabar\" button i'm guessing i need to run another SQL script to achieve this, please let me know","pastedContents":{},"timestamp":1759285110698,"project":"/home/vibecode/workspace"}
 {"display":"on the \"Acciones a tomar\" section over the date please put in blue text \"Fecha de revisión\"","pastedContents":{},"timestamp":1759285432252,"project":"/home/vibecode/workspace"}
 {"display":"Adding fecha de revision broke the alignment and the \"Acciones a tomar\" input field is no longer aligned with the date input field","pastedContents":{},"timestamp":1759285508984,"project":"/home/vibecode/workspace"}
+{"display":"they are not, it's worst than before actually ahha","pastedContents":{},"timestamp":1759285572342,"project":"/home/vibecode/workspace"}
