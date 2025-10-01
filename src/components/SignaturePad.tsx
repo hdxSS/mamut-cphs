@@ -163,8 +163,8 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
 
     // Save signature as base64 with compression
     const canvas = canvasRef.current;
-    if (canvas && hasDrawn) {
-      // Create a temporary canvas for compression
+    if (canvas && hasDrawn && context) {
+      // Create a temporary canvas with white background
       const tempCanvas = document.createElement('canvas');
       const tempCtx = tempCanvas.getContext('2d');
 
@@ -173,6 +173,10 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
       tempCanvas.height = canvas.height / 2;
 
       if (tempCtx) {
+        // Fill with white background first
+        tempCtx.fillStyle = '#FFFFFF';
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+        // Draw the canvas content on top
         tempCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
         // Use 0.5 quality for JPEG-like compression
         const dataUrl = tempCanvas.toDataURL('image/jpeg', 0.5);
