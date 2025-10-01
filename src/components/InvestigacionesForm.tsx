@@ -54,6 +54,7 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
     'Facturación',
     'Admin 2ndo piso',
     'Informática',
+    'Ingeniería',
     'Otros'
   ];
 
