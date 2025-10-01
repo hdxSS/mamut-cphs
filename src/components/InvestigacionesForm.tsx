@@ -113,7 +113,12 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
       antiguedad: '',
       declaracionAccidente: '',
       fecha: new Date().toISOString().split('T')[0],
-      acciones: []
+      acciones: [],
+      firmaAccidentado: '',
+      firmaMiembroCPHS: '',
+      firmaDeptoSSOMA: '',
+      firmaEncargadoArea: '',
+      firmaGerenteArea: ''
     });
     setShowOtroAreaInput(false);
     setIsUpdate(false);
