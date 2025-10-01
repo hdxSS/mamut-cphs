@@ -161,4 +161,8 @@ const NotificationBell = forwardRef<{ refreshReminders: () => void }, Notificati
       )}
     </div>
   );
-}
+});
+
+NotificationBell.displayName = 'NotificationBell';
+
+export default NotificationBell;

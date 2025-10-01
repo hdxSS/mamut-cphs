@@ -7,7 +7,8 @@ import SearchModal from '@/components/SearchModal';
 import AccionesCorrectivas from '@/components/AccionesCorrectivas';
 import DateInput from '@/components/DateInput';
 
-const InvestigacionesForm = forwardRef((props, ref) => {
+const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, ref) => {
+  const { onSaved } = props;
   const [formData, setFormData] = useState<Investigacion>({
     id: '000001',
     nombre: '',
