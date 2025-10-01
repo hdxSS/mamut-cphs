@@ -32,13 +32,24 @@ export default function SignaturePad({ value, onChange, width = 800, height = 20
     ctx.lineJoin = 'round';
 
     // Load existing signature if provided
-    if (value) {
+    if (value && value !== '') {
       const img = new Image();
       img.onload = () => {
-        ctx.drawImage(img, 0, 0);
+        // Clear canvas first
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Draw with white background to avoid artifacts
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Draw the image
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         setHasDrawn(true);
       };
       img.src = value;
+    } else {
+      // Clear canvas if no signature
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
   }, [value]);
 
