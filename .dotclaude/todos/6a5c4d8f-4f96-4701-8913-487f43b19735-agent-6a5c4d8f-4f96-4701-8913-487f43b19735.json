@@ -16,12 +16,12 @@
   },
   {
     "content": "Create Supabase configuration and setup instructions",
-    "status": "in_progress",
+    "status": "completed",
     "activeForm": "Creating Supabase configuration and setup instructions"
   },
   {
     "content": "Update InvestigacionesForm to use async storage",
-    "status": "pending",
+    "status": "in_progress",
     "activeForm": "Updating InvestigacionesForm to use async storage"
   },
   {

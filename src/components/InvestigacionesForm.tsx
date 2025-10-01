@@ -2,7 +2,7 @@
 
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
-import { storageService } from '@/lib/storage';
+import { storageService } from '@/lib/storageAPI';
 import SearchModal from '@/components/SearchModal';
 import AccionesCorrectivas from '@/components/AccionesCorrectivas';
 import DateInput from '@/components/DateInput';
@@ -28,9 +28,11 @@ const InvestigacionesForm = forwardRef((props, ref) => {
   useEffect(() => {
     setMounted(true);
     // Show next available ID (without incrementing counter)
-    if (typeof window !== 'undefined') {
-      setFormData(prev => ({ ...prev, id: storageService.getNextId() }));
-    }
+    const loadNextId = async () => {
+      const nextId = await storageService.getNextId();
+      setFormData(prev => ({ ...prev, id: nextId }));
+    };
+    loadNextId();
   }, []);
 
   const areas = [
