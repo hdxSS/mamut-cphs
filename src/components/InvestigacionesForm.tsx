@@ -304,7 +304,6 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
                   name="area"
                   value={formData.area}
                   onChange={handleInputChange}
-                  required
                   placeholder="Ingrese el área o empresa externa..."
                   className="w-full border border-gray-300 rounded px-3 py-2"
                 />
@@ -319,7 +318,6 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
                   name="antiguedad"
                   value={formData.antiguedad}
                   onChange={handleInputChange}
-                  required
                   className="w-full border border-gray-300 rounded px-3 py-2"
                 />
               </div>
@@ -334,7 +332,6 @@ const InvestigacionesForm = forwardRef<any, { onSaved?: () => void }>((props, re
               name="declaracionAccidente"
               value={formData.declaracionAccidente}
               onChange={handleInputChange}
-              required
               rows={6}
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
