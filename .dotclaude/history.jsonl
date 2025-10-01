@@ -78,3 +78,4 @@
 {"display":"the deploy hook link opens and says {\"job\":{\"id\":\"BagPu6V4JCbpS05KauAO\",\"state\":\"PENDING\",\"createdAt\":1759291478337}}","pastedContents":{},"timestamp":1759291535744,"project":"/home/vibecode/workspace"}
 {"display":"status reads as stale and the buildlog looks like this 00:59:06[Pasted text #1 +63 lines]","pastedContents":{},"timestamp":1759291771297,"project":"/home/vibecode/workspace"}
 {"display":"is this still the same? 01:04:39.793 Running build in Washington, D.C., USA (East) – iad1\n01:04:39.793 Build machine configuration: 2 cores, 8[Pasted text #1 +61 lines]","pastedContents":{},"timestamp":1759291961745,"project":"/home/vibecode/workspace"}
+{"display":"It is not working still failing https://mamut-cphs2-p7oechrvx-hdxss-projects.vercel.app/","pastedContents":{},"timestamp":1759292044810,"project":"/home/vibecode/workspace"}
