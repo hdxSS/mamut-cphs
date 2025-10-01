@@ -8,6 +8,7 @@ import { Investigacion } from '@/types/investigacion';
 
 export default function Home() {
   const formRef = useRef<{ loadInvestigacion: (inv: Investigacion) => void }>(null);
+  const bellRef = useRef<{ refreshReminders: () => void }>(null);
 
   const handleReminderClick = (investigacion: Investigacion) => {
     if (formRef.current) {
@@ -15,11 +16,17 @@ export default function Home() {
     }
   };
 
+  const handleFormSaved = () => {
+    if (bellRef.current) {
+      bellRef.current.refreshReminders();
+    }
+  };
+
   const tabs = [
     {
       id: 'investigaciones',
       label: 'Investigaciones',
-      component: <InvestigacionesForm ref={formRef} />
+      component: <InvestigacionesForm ref={formRef} onSaved={handleFormSaved} />
     },
     // More tabs can be added here in the future
   ];
@@ -32,7 +39,7 @@ export default function Home() {
             <h1 className="text-2xl font-bold">Mamut CPHS</h1>
             <p className="text-sm text-blue-100">Sistema de Gestión de Investigaciones</p>
           </div>
-          <NotificationBell onReminderClick={handleReminderClick} />
+          <NotificationBell ref={bellRef} onReminderClick={handleReminderClick} />
         </div>
       </header>
 

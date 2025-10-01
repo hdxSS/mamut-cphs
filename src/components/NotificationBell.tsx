@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { storageService } from '@/lib/storageAPI';
 import { Investigacion, AccionCorrectiva } from '@/types/investigacion';
 import { formatDateToDDMMYYYY } from '@/lib/dateUtils';
@@ -9,13 +9,11 @@ interface NotificationBellProps {
   onReminderClick?: (investigacion: Investigacion) => void;
 }
 
-export default function NotificationBell({ onReminderClick }: NotificationBellProps) {
-  const [reminders, setReminders] = useState<{ investigacion: Investigacion; accion: AccionCorrectiva }[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
+const NotificationBell = forwardRef<{ refreshReminders: () => void }, NotificationBellProps>(
+  ({ onReminderClick }, ref) => {
+    const [reminders, setReminders] = useState<{ investigacion: Investigacion; accion: AccionCorrectiva }[]>([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     // Check reminders on mount and every hour
     const checkReminders = async () => {
@@ -23,11 +21,17 @@ export default function NotificationBell({ onReminderClick }: NotificationBellPr
       setReminders(pending);
     };
 
-    checkReminders();
-    const interval = setInterval(checkReminders, 3600000); // Check every hour
+    useEffect(() => {
+      setMounted(true);
+      checkReminders();
+      const interval = setInterval(checkReminders, 3600000); // Check every hour
+      return () => clearInterval(interval);
+    }, []);
 
-    return () => clearInterval(interval);
-  }, []);
+    // Expose refresh method to parent
+    useImperativeHandle(ref, () => ({
+      refreshReminders: checkReminders
+    }));
 
   if (!mounted) {
     return (
