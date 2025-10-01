@@ -9,7 +9,7 @@ interface SignaturePadProps {
   height?: number;
 }
 
-export default function SignaturePad({ value, onChange, width = 500, height = 200 }: SignaturePadProps) {
+export default function SignaturePad({ value, onChange, width = 800, height = 200 }: SignaturePadProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
@@ -39,36 +39,49 @@ export default function SignaturePad({ value, onChange, width = 500, height = 20
     }
   }, [value]);
 
+  const getCoordinates = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    if ('touches' in e) {
+      const touch = e.touches[0];
+      return {
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY
+      };
+    } else {
+      return {
+        x: (e.clientX - rect.left) * scaleX,
+        y: (e.clientY - rect.top) * scaleY
+      };
+    }
+  };
+
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
     if (!context) return;
     setIsDrawing(true);
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const x = 'touches' in e ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
-    const y = 'touches' in e ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
-
+    const { x, y } = getCoordinates(e);
     context.beginPath();
     context.moveTo(x, y);
   };
 
   const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
     if (!isDrawing || !context) return;
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const x = 'touches' in e ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
-    const y = 'touches' in e ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
-
+    const { x, y } = getCoordinates(e);
     context.lineTo(x, y);
     context.stroke();
   };
 
-  const stopDrawing = () => {
+  const stopDrawing = (e?: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    if (e) e.preventDefault();
     if (!isDrawing) return;
     setIsDrawing(false);
 
@@ -90,7 +103,7 @@ export default function SignaturePad({ value, onChange, width = 500, height = 20
 
   return (
     <div className="space-y-2">
-      <div className="relative">
+      <div className="border-4 border-blue-500 rounded-lg p-2 bg-gray-50 inline-block">
         <canvas
           ref={canvasRef}
           width={width}
@@ -98,12 +111,18 @@ export default function SignaturePad({ value, onChange, width = 500, height = 20
           onMouseDown={startDrawing}
           onMouseMove={draw}
           onMouseUp={stopDrawing}
-          onMouseLeave={stopDrawing}
+          onMouseLeave={(e) => {
+            if (isDrawing) {
+              // Don't stop drawing when leaving the canvas
+              e.preventDefault();
+            }
+          }}
           onTouchStart={startDrawing}
           onTouchMove={draw}
           onTouchEnd={stopDrawing}
-          className="border-2 border-gray-300 rounded cursor-crosshair touch-none bg-white"
-          style={{ width: '100%', maxWidth: `${width}px`, height: `${height}px` }}
+          onTouchCancel={stopDrawing}
+          className="cursor-crosshair touch-none bg-white rounded"
+          style={{ display: 'block', width: '100%', maxWidth: `${width}px`, height: `${height}px` }}
         />
       </div>
       <button
