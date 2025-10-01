@@ -178,7 +178,10 @@ export default function AccionesCorrectivas({ acciones, onChange }: AccionesCorr
               />
             </div>
 
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 flex flex-col">
+              <label className="text-xs text-blue-600 font-medium mb-1">
+                Fecha de revisión
+              </label>
               <DateInput
                 value={accion.fechaRecordatorio}
                 onChange={(value) => handleUpdateAccion(accion.id, 'fechaRecordatorio', value)}
